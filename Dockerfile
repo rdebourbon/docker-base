@@ -17,8 +17,8 @@ RUN apt-get -q update && \
 \
     apt-get -qy --force-yes dist-upgrade && \
     apt-get install -qy --force-yes \
-      apt-transport-https ca-certificates curl git nano openssl python-software-properties \
-      rsync software-properties-common ssl-cert supervisor telnet xz-utils && \
+      apt-transport-https ca-certificates curl git nano openssl procps python-software-properties \
+      rsync software-properties-common ssl-cert supervisor tar telnet wget xz-utils && \
     apt-get -y autoremove && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* && \
