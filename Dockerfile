@@ -6,7 +6,8 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     LC_ALL="en_US.UTF-8" \
     LANGUAGE="en_US.UTF-8"
 
-RUN apt-get -q update && \
+RUN sed -i "/^# deb.*multiverse/ s/^# //" /etc/apt/sources.list && \
+    apt-get -q update && \
     apt-get install -qy locales && \
     echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && \
     echo 'en_ZA.UTF-8 UTF-8' >> /etc/locale.gen && \
@@ -17,8 +18,8 @@ RUN apt-get -q update && \
 \
     apt-get -qy --force-yes dist-upgrade && \
     apt-get install -qy --force-yes \
-      apt-transport-https ca-certificates curl git nano openssl procps python-software-properties \
-      rsync software-properties-common ssl-cert supervisor tar telnet wget xz-utils && \
+      apt-transport-https ca-certificates curl git nano openssl procps python python-software-properties \
+      rsync software-properties-common ssl-cert supervisor tar telnet wget unrar xz-utils && \
     apt-get -y autoremove && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* && \
