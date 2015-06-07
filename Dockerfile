@@ -4,7 +4,8 @@ MAINTAINER tim@haak.co.uk
 ENV DEBIAN_FRONTEND="noninteractive" \
     LANG="en_US.UTF-8" \
     LC_ALL="en_US.UTF-8" \
-    LANGUAGE="en_US.UTF-8"
+    LANGUAGE="en_US.UTF-8" \
+    TERM="xterm"
 
 RUN sed -i "/^# deb.*multiverse/ s/^# //" /etc/apt/sources.list && \
     apt-get -q update && \
@@ -18,8 +19,8 @@ RUN sed -i "/^# deb.*multiverse/ s/^# //" /etc/apt/sources.list && \
 \
     apt-get -qy --force-yes dist-upgrade && \
     apt-get install -qy --force-yes \
-      apt-transport-https ca-certificates curl git nano openssl procps python python-software-properties \
-      rsync software-properties-common ssl-cert supervisor tar telnet wget unrar xz-utils && \
+      apt-transport-https bzip2 ca-certificates curl dnsutils git nano openssl procps python python-software-properties \
+      rsync rsyslog software-properties-common ssl-cert supervisor tar telnet tmux traceroute wget unrar vcsh xz-utils zsh&& \
     apt-get -y autoremove && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* && \
