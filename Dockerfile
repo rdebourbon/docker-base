@@ -30,4 +30,5 @@ RUN sed -i "/^deb.*universe/ s/universe/universe multiverse/" /etc/apt/sources.l
     apt-get -y autoremove && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/tmp/* && \
     rm -rf /tmp/*
